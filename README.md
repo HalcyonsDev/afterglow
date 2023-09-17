@@ -13,10 +13,12 @@
 <li>Spring Security, Jwt Authentication & Authorization</li>
 <li>Users, Posts, Images, Likes, Comments, Subscriptions CRUD</li>
 <li>Uploading and saving images</li>
+<li>OpenAPI</li>
 
 <h1>Technologies</h1>
 <li>Spring Boot</li>
 <li>Spring Data</li>
 <li>Spring Security</li>
 <li>Spring Web</li>
+<li>Swagger</li>
 <li>MySQL</li>
