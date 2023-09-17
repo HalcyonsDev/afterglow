@@ -2,6 +2,8 @@ package com.halcyon.julioimage.controller;
 
 import com.halcyon.julioimage.model.Image;
 import com.halcyon.julioimage.service.image.ImageService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,12 +20,17 @@ import java.util.Random;
 @RestController
 @RequestMapping("/api/v1/images")
 @RequiredArgsConstructor
+@Tag(name = "Images")
 public class ImageController {
     private final HttpServletRequest request;
     private final ImageService imageService;
 
     @PostMapping("/upload/{postId}")
-    public ResponseEntity<Image> create(@PathVariable Long postId, @RequestParam("file")MultipartFile file) throws IOException {
+    @Operation(
+            summary = "upload and save image in post by its id",
+            description = "upload image"
+    )
+    public ResponseEntity<Image> create(@PathVariable Long postId, @RequestParam("file") MultipartFile file) throws IOException {
         if (Objects.equals(file.getContentType(), "image/jpeg") &&
                 Objects.equals(file.getContentType(), "image/png")) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image type should be jpeg/png!");

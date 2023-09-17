@@ -33,7 +33,21 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                                 // Entry points
-                                .requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers(
+                                        "/api/v1/auth/**",
+                                        "/v2/api-docs",
+                                        "/v3/api-docs",
+                                        "/v3/api-docs/**",
+                                        "/api/auth/**",
+                                        "/swagger-resources",
+                                        "/swagger-resources/**",
+                                        "/configuration/ui",
+                                        "/configuration/security",
+                                        "/swagger/**",
+                                        "/swagger-ui/**",
+                                        "/webjars/**",
+                                        "/api/info/ping"
+                                ).permitAll()
                                 .anyRequest().authenticated()
                                 .and()
 

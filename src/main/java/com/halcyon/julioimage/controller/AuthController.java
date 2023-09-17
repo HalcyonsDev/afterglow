@@ -5,6 +5,7 @@ import com.halcyon.julioimage.security.AuthRequest;
 import com.halcyon.julioimage.security.AuthResponse;
 import com.halcyon.julioimage.security.RefreshRequest;
 import com.halcyon.julioimage.service.auth.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication")
 public class AuthController {
     private final AuthService authService;
 
