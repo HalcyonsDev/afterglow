@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.halcyon</groupId>
-	<artifactId>julio-image</artifactId>
+	<artifactId>afterglow</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>julio-image</name>
-	<description>Julio-Image service for working with images</description>
+	<name>afterglow</name>
+	<description>Afterglow service for working with images</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
