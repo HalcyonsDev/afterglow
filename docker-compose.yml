@@ -5,7 +5,7 @@ services:
     container_name: afterglow-mysql
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: S9o6u4T0
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: afterglow
     ports:
       - "3307:3306"
