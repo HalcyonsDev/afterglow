@@ -3,8 +3,11 @@ package com.halcyon.afterglow.service.auth;
 import com.halcyon.afterglow.dto.auth.SignUpDto;
 import com.halcyon.afterglow.model.Token;
 import com.halcyon.afterglow.model.User;
+import com.halcyon.afterglow.security.AuthRequest;
+import com.halcyon.afterglow.security.AuthResponse;
 import com.halcyon.afterglow.service.token.TokenService;
 import com.halcyon.afterglow.service.user.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -60,6 +63,31 @@ public class AuthServiceTests {
         when(userService.create(Mockito.any(User.class))).thenReturn(user);
         when(passwordEncoder.encode(dto.getPassword())).thenReturn("HASHED_PASSWORD");
         when(jwtProvider.generateToken(Mockito.any(User.class), Mockito.anyBoolean())).thenReturn("TOKEN.TOKEN.TOKEN");
+        when(tokenService.create(Mockito.any(Token.class))).thenReturn(token);
 
+        AuthResponse authResponse = authService.signup(dto);
+
+        Assertions.assertNotNull(authResponse.getAccessToken());
+        Assertions.assertNotNull(authResponse.getRefreshToken());
+        Assertions.assertEquals("Bearer", authResponse.getTYPE());
+    }
+
+    @Test
+    public void AuthService_Login_ReturnsAuthResponse() {
+        Token token = new Token();
+        token.setValue("TOKEN.TOKEN.TOKEN");
+
+        AuthRequest authRequest = new AuthRequest(user.getEmail(), user.getPassword());
+
+        when(userService.findByEmail(user.getEmail())).thenReturn(user);
+        when(passwordEncoder.matches(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
+        when(jwtProvider.generateToken(Mockito.any(User.class), Mockito.anyBoolean())).thenReturn("TOKEN.TOKEN.TOKEN");
+        when(tokenService.create(Mockito.any(Token.class))).thenReturn(token);
+
+        AuthResponse authResponse = authService.login(authRequest);
+
+        Assertions.assertNotNull(authResponse.getAccessToken());
+        Assertions.assertNotNull(authResponse.getRefreshToken());
+        Assertions.assertEquals("Bearer", authResponse.getTYPE());
     }
 }
