@@ -6,10 +6,12 @@ import com.halcyon.afterglow.service.comment.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/v1/comments")
 @RequiredArgsConstructor
 @Tag(name = "Comments")
+@Validated
 public class CommentController {
     private final CommentService commentService;
 
@@ -66,12 +69,15 @@ public class CommentController {
         return ResponseEntity.ok(comments);
     }
 
-    @PatchMapping("/update/{commentId}")
+    @PatchMapping("/{commentId}/update")
     @Operation(
             summary = "find and update comment's value by its id",
             description = "update comment's value by id"
     )
-    public ResponseEntity<Comment> updateValueById(@PathVariable Long commentId, @RequestParam String value) {
+    public ResponseEntity<Comment> updateValueById(
+            @PathVariable Long commentId,
+            @RequestParam
+            @Size(min = 2, max = 100, message = "Value must be more than 1 character and less than 100 characters.") String value) {
         Comment updatedComment = commentService.updateValueById(commentId, value);
         return ResponseEntity.ok(updatedComment);
     }

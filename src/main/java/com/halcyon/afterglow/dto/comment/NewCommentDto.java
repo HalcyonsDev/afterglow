@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class NewCommentDto {
     private Long postId;
 
-    @Size(min = 1, max = 100, message = "Value must be more than 1 character and less than 100 characters.")
+    @Size(min = 2, max = 100, message = "Value must be more than 1 character and less than 100 characters.")
     private String value;
 }

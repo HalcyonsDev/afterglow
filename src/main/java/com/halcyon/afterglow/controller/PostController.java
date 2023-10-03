@@ -6,10 +6,12 @@ import com.halcyon.afterglow.service.post.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/v1/posts")
 @RequiredArgsConstructor
 @Tag(name = "Posts")
+@Validated
 public class PostController {
     private final PostService postService;
 
@@ -63,27 +66,32 @@ public class PostController {
     )
     public ResponseEntity<List<Post>> getAllByOwner() {
         List<Post> posts = postService.findAllByOwner();
-        System.out.println(posts);
         return ResponseEntity.ok(posts);
     }
 
-    @PatchMapping("/update-name/{postId}")
+    @PatchMapping("/{postId}/update-name")
     @Operation(
             summary = "find post and update name for it by id",
-            description = "update post name by id"
+            description = "update post's name by id"
     )
-    public ResponseEntity<Post> updateNameById(@PathVariable Long postId, @RequestParam String name) {
-        Post updatedPost = postService.updateNameById(postId, name);
+    public ResponseEntity<Post> updateNameById(
+            @PathVariable Long postId,
+            @RequestParam
+            @Size(min = 2, max = 50, message = "Name must be more than 1 character and less than 50 characters.") String value) {
+        Post updatedPost = postService.updateNameById(postId, value);
         return ResponseEntity.ok(updatedPost);
     }
 
-    @PatchMapping("/update-description/{postId}")
+    @PatchMapping("/{postId}/update-description")
     @Operation(
             summary = "find post and update description for it by id",
-            description = "update post description by id"
+            description = "update post's description by id"
     )
-    public ResponseEntity<Post> updateDescriptionById(@PathVariable Long postId, @RequestParam String description) {
-        Post updatedPost = postService.updateDescriptionById(postId, description);
+    public ResponseEntity<Post> updateDescriptionById(
+            @PathVariable Long postId,
+            @RequestParam
+            @Size(min = 4, max = 64, message = "Description must be more than 3 characters and less than 64 characters.") String value) {
+        Post updatedPost = postService.updateDescriptionById(postId, value);
         return ResponseEntity.ok(updatedPost);
     }
 }
