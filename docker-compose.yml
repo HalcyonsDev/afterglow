@@ -1,18 +1,6 @@
 version: "1.0"
 
 services:
-  afterglow-mysql:
-    container_name: afterglow-mysql
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: afterglow
-    ports:
-      - "3307:3306"
-    volumes:
-      - G:/afterglow-db:/docker-entrypoint-initdb.d
-    networks:
-      - afterglow-network
   afterglow-app:
     container_name: afterglow
     image: afterglow
@@ -20,8 +8,19 @@ services:
       - "8080:8080"
     networks:
       - afterglow-network
+
+  afterglow-db:
+    container_name: afterglow-db
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: afterglow
+    ports:
+      - "3307:3306"
+    networks:
+      - afterglow-network
 volumes:
-  afterglow-mysql:
+  afterglow-db:
 
 networks:
   afterglow-network:
