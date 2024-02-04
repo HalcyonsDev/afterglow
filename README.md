@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Developed%20by-halcyon-blue)](https://github.com/HalcyonsDev)
 ![](https://img.shields.io/badge/JDK-17-yellow)
 ![](https://img.shields.io/badge/Spring%20Boot-3.0.11-%236DB33F)
-[![](https://img.shields.io/badge/DBMS-MySQL-%234476ff)](https://www.mysql.com/)
+[![](https://img.shields.io/badge/DBMS-PostgreSQL-%234476ff)](https://www.postgresql.org/)
 </h1>
 
 <p>Afterglow is a service with users, posts, likes, dislikes, comments and subscriptions, where you can also share and save images</p>
@@ -21,5 +21,5 @@
 <li>Spring Security</li>
 <li>Spring Web</li>
 <li>Swagger</li>
-<li>MySQL</li>
+<li>PostgreSQL</li>
 <li>Docker</li>
