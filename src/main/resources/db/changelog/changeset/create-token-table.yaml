@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-token
+      author: halcyon
+      changes:
+        - createTable:
+            tableName: tokens
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: value
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: owner
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false

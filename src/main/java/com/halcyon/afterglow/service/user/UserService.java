@@ -2,7 +2,7 @@ package com.halcyon.afterglow.service.user;
 
 import com.halcyon.afterglow.dto.user.UpdateUserDto;
 import com.halcyon.afterglow.model.User;
-import com.halcyon.afterglow.repository.IUserRepository;
+import com.halcyon.afterglow.repository.UserRepository;
 import com.halcyon.afterglow.security.JwtAuthentication;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private final IUserRepository userRepository;
+    private final UserRepository userRepository;
 
     public User create(User user) {
         return userRepository.save(user);

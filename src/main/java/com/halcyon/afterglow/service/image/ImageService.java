@@ -3,7 +3,7 @@ package com.halcyon.afterglow.service.image;
 import com.halcyon.afterglow.model.Image;
 import com.halcyon.afterglow.model.Post;
 import com.halcyon.afterglow.model.User;
-import com.halcyon.afterglow.repository.IImageRepository;
+import com.halcyon.afterglow.repository.ImageRepository;
 import com.halcyon.afterglow.service.auth.AuthService;
 import com.halcyon.afterglow.service.post.PostService;
 import com.halcyon.afterglow.service.user.UserService;
@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ImageService {
-    private final IImageRepository imageRepository;
+    private final ImageRepository imageRepository;
     private final PostService postService;
     private final UserService userService;
     private final AuthService authService;

@@ -1,0 +1,24 @@
+spring:
+  liquibase:
+    enabled: true
+
+  datasource:
+    url: jdbc:postgresql://afterglow-db:5432/afterglow
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  servlet:
+    multipart:
+      max-file-size: 51200KB
+      max-request-size: 51200KB
+
+jwt:
+  secret:
+    access: LA4XZ8oPuhwbaGHpPZBA7j6AzdnaufJxcA3BqN8qu/c/1mKklF+60Ds0PH4W/+yDXtZ4Ptaij135LReqleMEwg==
+    refresh: 40bibBIBBT9lhB4xcAq4PqxBBkpi0Gw5okd8GrlGaLzIYjSPfTG1Xc+WPT0UxqXfyDV4P5WuPMecRkwM+e8c5Q==

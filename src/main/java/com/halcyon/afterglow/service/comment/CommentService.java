@@ -4,7 +4,7 @@ import com.halcyon.afterglow.dto.comment.NewCommentDto;
 import com.halcyon.afterglow.model.Comment;
 import com.halcyon.afterglow.model.Post;
 import com.halcyon.afterglow.model.User;
-import com.halcyon.afterglow.repository.ICommentRepository;
+import com.halcyon.afterglow.repository.CommentRepository;
 import com.halcyon.afterglow.service.auth.AuthService;
 import com.halcyon.afterglow.service.post.PostService;
 import com.halcyon.afterglow.service.user.UserService;
@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommentService {
-    private final ICommentRepository commentRepository;
+    private final CommentRepository commentRepository;
     private final PostService postService;
     private final UserService userService;
     private final AuthService authService;

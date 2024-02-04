@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface IPostRepository extends JpaRepository<Post, Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Post post SET post.name = ?1 WHERE post.id = ?2")

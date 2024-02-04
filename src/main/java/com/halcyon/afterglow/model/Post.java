@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "posts")
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -42,7 +43,7 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     @JsonBackReference
-    private List<Like> likes;
+    private List<Rating> ratings;
 
     @OneToMany(mappedBy = "post")
     @JsonBackReference

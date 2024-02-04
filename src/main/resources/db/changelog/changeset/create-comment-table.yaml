@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-comment
+      author: halcyon
+      changes:
+        - createTable:
+            tableName: comments
+            columns:
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: value
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: owner
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false
+
+              - column:
+                  name: post_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: post
+                    referencedTableName: posts
+                    referencedColumnNames: id
+                    nullable: false

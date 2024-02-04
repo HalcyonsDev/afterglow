@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ISubscriptionRepository extends JpaRepository<Subscription, Long> {
+public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
     boolean existsByOwnerAndTarget(User owner, User target);
     Subscription findByOwnerAndTarget(User owner, User target);
     List<Subscription> findAllByOwner(User owner);

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface ICommentRepository extends JpaRepository<Comment, Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Comment comment SET comment.value = ?1 WHERE comment.id = ?2")

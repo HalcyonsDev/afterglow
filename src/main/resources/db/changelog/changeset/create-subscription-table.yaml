@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-subscription
+      author: halcyon
+      changes:
+        - createTable:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: owner
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false
+
+              - column:
+                  name: target_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: target
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false

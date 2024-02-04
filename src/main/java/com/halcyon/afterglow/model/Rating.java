@@ -1,18 +1,17 @@
 package com.halcyon.afterglow.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 
 @Entity
-@Table(name = "likes")
+@Table(name = "ratings")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Like {
+@RequiredArgsConstructor
+public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,12 +20,19 @@ public class Like {
     @Column(name = "created_at")
     private Instant createdAt;
 
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    @NonNull
+    private RatingType type;
+
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @NonNull
     private User owner;
 
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id")
+    @NonNull
     private Post post;
 
     @PrePersist

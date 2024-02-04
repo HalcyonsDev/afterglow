@@ -11,12 +11,12 @@ services:
 
   afterglow-db:
     container_name: afterglow-db
-    image: mysql
+    image: postgres
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: afterglow
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: afterglow
     ports:
-      - "3307:3306"
+      - "5432:5432"
     networks:
       - afterglow-network
 volumes:

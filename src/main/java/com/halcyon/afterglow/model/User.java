@@ -48,7 +48,7 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     @JsonBackReference
-    private List<Like> likes;
+    private List<Rating> ratings;
 
     @OneToMany(mappedBy = "owner")
     @JsonBackReference

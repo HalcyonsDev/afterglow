@@ -2,7 +2,7 @@ package com.halcyon.afterglow.service.subscription;
 
 import com.halcyon.afterglow.model.Subscription;
 import com.halcyon.afterglow.model.User;
-import com.halcyon.afterglow.repository.ISubscriptionRepository;
+import com.halcyon.afterglow.repository.SubscriptionRepository;
 import com.halcyon.afterglow.service.auth.AuthService;
 import com.halcyon.afterglow.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SubscriptionService {
-    private final ISubscriptionRepository subscriptionRepository;
+    private final SubscriptionRepository subscriptionRepository;
     private final UserService userService;
     private final AuthService authService;
 

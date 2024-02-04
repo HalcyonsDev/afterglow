@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create-user-table.yaml
+  - include:
+      file: db/changelog/changeset/create-token-table.yaml
+  - include:
+      file: db/changelog/changeset/create-post-table.yaml
+  - include:
+      file: db/changelog/changeset/create-comment-table.yaml
+  - include:
+      file: db/changelog/changeset/create-image-table.yaml
+  - include:
+      file: db/changelog/changeset/create-subscription-table.yaml
+  - include:
+      file: db/changelog/changeset/create-rating-table.yaml

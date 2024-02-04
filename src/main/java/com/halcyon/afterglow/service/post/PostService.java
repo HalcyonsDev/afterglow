@@ -3,7 +3,7 @@ package com.halcyon.afterglow.service.post;
 import com.halcyon.afterglow.dto.post.NewPostDto;
 import com.halcyon.afterglow.model.Post;
 import com.halcyon.afterglow.model.User;
-import com.halcyon.afterglow.repository.IPostRepository;
+import com.halcyon.afterglow.repository.PostRepository;
 import com.halcyon.afterglow.service.auth.AuthService;
 import com.halcyon.afterglow.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-    private final IPostRepository postRepository;
+    private final PostRepository postRepository;
     private final UserService userService;
     private final AuthService authService;
 

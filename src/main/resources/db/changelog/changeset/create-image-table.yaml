@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-image
+      author: halcyon
+      changes:
+        - createTable:
+            tableName: images
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: source
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: post_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: post
+                    referencedTableName: posts
+                    referencedColumnNames: id
+                    nullable: false
